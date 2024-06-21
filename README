@@ -1,0 +1,71 @@
+1)
+
+Downloaded the microarray data from GEO of Geo accession number: GSE25097
+
+and marked 100 samples and 2 different groups 
+
+also named column names to match toptable
+
+bacground correction is done
+
+NAN values are removed
+
+gset will be containing the data to be expressed
+
+2) and 3)
+
+Normalize the expressed data 
+
+and groups have been made for different classes(tumor and non-tumor)
+
+To have Data visualized we have used various(MA, scatter, etc.) plots.
+
+initially log2 tranformation is done, and the data which was having
+
+very high values(like 16) will be get converted to smaller and better analyzable values(4)
+
+fdata and pdata have been listed out using fd and metadata respectivly 
+
+
+4)
+
+Firstly we have classified samples differently with non-tumor and tumor
+
+So that we can apply t-test
+
+after applyting t-test for every gene of sample1 and sample2
+
+the result of t-test will be having p value of each gene which will be adjusted using holm correction by p.adjust function
+
+also Log fold change will be calculated by first calculating mean of sample1/ mean of sample2 for each genes and then taking log2 of it
+
+5)
+
+we used limma package here firstly we have used fit variable having data of linearly fit model
+
+then we used ebays of limma package to have significant genes
+
+actually ebayes method calculates probability that each gene is differentially expressed, and these probabilities are then used to rank and select significant genes.
+
+then we have used p value cutoff as 0.05 to mark the significant and non significant genes
+
+
+6)
+
+we have used the cutoff of 1 for logfc and 0.05 for p-value
+
+
+7 8 and 9)
+firstly we made a genelist of significant gene, which will be used in enrichment analysis
+
+using enrichkegg function we have done the enrichment analysis
+
+parameters used are genelist of significant genes, organism as homosapiens, with key as KEGGKEGG (Kyoto Encyclopedia of Genes and Genomes), pvalue cutoff as 0.05, FDR(KEGG (Kyoto Encyclopedia of Genes and Genomes) cutoff as 0.2 which will give us best results
+
+the result of it will be used in plotting dotplot, heatplot
+
+then cnetplot is used to get the pathways with genes at vertices of it
+
+
+
+
